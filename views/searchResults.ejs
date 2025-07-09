@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+
+    <!-- Search form -->
+    <form action="/search" method="GET">
+      <label for="query">Search by name or email:</label>
+      <input
+        type="text"
+        id="query"
+        name="query"
+        placeholder="Enter name or email"
+        value="<%= query || '' %>"
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- Display search results -->
+    <% if (users.length > 0) { %>
+    <ul>
+      <% users.forEach(user => { %>
+      <li>
+        <strong><%= user.firstName %> <%= user.lastName %></strong><br />
+        Email: <%= user.email %><br />
+        Age: <%= user.age || 'N/A' %><br />
+        Bio: <%= user.bio || 'N/A' %>
+      </li>
+      <% }); %>
+    </ul>
+    <% } else { %>
+    <p>No users found matching your search.</p>
+    <% } %>
+
+    <a href="/">Back to Home</a>
+  </body>
+</html>

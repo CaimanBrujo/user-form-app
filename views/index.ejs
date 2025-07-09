@@ -6,15 +6,31 @@
   </head>
   <body>
     <h1><%= title %></h1>
+
+    <!-- Search form -->
+    <form action="/search" method="GET">
+      <input
+        type="text"
+        name="query"
+        placeholder="Search by name or email"
+        required
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <h2>User List</h2>
     <ul>
-      <% if (users.length > 0) { %> <% users.forEach(user => { %>
+      <% if (users && users.length > 0) { %> <% users.forEach(user => { %>
       <li>
-        ID: <%= user.id %> | Name: <%= user.firstName %> <%= user.lastName %>
+        <strong><%= user.firstName %> <%= user.lastName %></strong>
+        (<%= user.email %>) <% if (user.age) { %> - Age: <%= user.age %> <% } %>
+        <% if (user.bio) { %> - Bio: <%= user.bio %> <% } %>
       </li>
-      <% }); %> <% } else { %>
-      <li>No users yet.</li>
+      <% }) %> <% } else { %>
+      <li>No users found.</li>
       <% } %>
     </ul>
-    <a href="/create">Create a new user</a>
+
+    <a href="/create">Create New User</a>
   </body>
 </html>

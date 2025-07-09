@@ -1,18 +1,24 @@
 const express = require("express");
-const app = express();
+const path = require("path");
 const usersRouter = require("./routes/usersRouter");
 
-// Set EJS as template engine
-app.set("view engine", "ejs");
+const app = express();
 
-// Middleware to parse form data
+// Set EJS as the view engine
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+// Middleware to parse URL-encoded data (for forms)
 app.use(express.urlencoded({ extended: true }));
 
-// Use our router
+// Serve static files if needed (e.g., CSS, images)
+app.use(express.static(path.join(__dirname, "public")));
+
+// Use the users router for all routes
 app.use("/", usersRouter);
 
-// Start server
+// Start the server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () =>
-  console.log(`Server running on http://localhost:${PORT}`)
-);
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
