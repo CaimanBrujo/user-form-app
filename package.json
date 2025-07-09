@@ -1,0 +1,25 @@
+{
+  "name": "user-form-app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaimanBrujo/user-form-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CaimanBrujo/user-form-app/issues"
+  },
+  "homepage": "https://github.com/CaimanBrujo/user-form-app#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1"
+  },
+  "description": ""
+}
